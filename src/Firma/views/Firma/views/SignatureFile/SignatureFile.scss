@@ -1,0 +1,21 @@
+.verif_content {
+  display: flex;
+  padding: 0px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0px;
+  .dashed_button{
+    border-color: var(--color_button_shape);
+    color: var(--color_body_secundary);
+    &:hover{
+      color: var(--color_content_primary);
+      border-color: var(--color_button_shape_hover);
+    }
+    &:focus{
+      color: var(--color_content_primary);
+      border-color: var(--color_button_shape_hover); 
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.content_list{
+    padding: 30px;
+}
+.demo-loadmore-list {
+  min-height: 350px;
+}
+.button_options{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5px;
+  .ant-btn {
+    background-color: var(--color_button_form);
+    border-style: none;
+    width: 200px;
+    &:hover {
+      background-color: var(--color_button_form_active);
+    }
+    &:focus {
+      background-color: var(--color_button_form);
+    }
+    .anticon svg {
+      color: var(--color_content_primary);
+      &:hover {
+        color: var(--color_content_secundary);
+      }
+    }
+  }
+}

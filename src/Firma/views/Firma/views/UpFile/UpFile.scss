@@ -1,0 +1,33 @@
+.form-zip {
+  .upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+  }
+
+  .upload-list-inline [class*="-upload-list-rtl"] .ant-upload-list-item {
+    float: right;
+  }
+
+  .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
+    color: var(--color_content_primary) !important;
+  }
+  .ant-btn {
+    background-color: var(--color_button_form);
+    border-style: none;
+    font-size: large;
+    width: 200px;
+    &:hover {
+      background-color: var(--color_button_form_active);
+    }
+    &:focus {
+      background-color: var(--color_button_form);
+    }
+    .anticon svg {
+      color: var(--color_content_primary);
+      &:hover {
+        color: var(--color_content_secundary);
+      }
+    }
+  }
+}

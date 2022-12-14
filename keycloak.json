@@ -1,0 +1,12 @@
+{
+  "realm": "Sistema de Firmas Digitales",
+  "url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "clientId": "Sistema de Firmas Digitales -BFO",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "64258a01-e7f0-4820-b515-e581ebd75c25"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}

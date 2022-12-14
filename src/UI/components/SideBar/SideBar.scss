@@ -1,0 +1,165 @@
+.sidebar_container {
+  --nav-width: 16rem;
+  background: var(--color-body_page);
+  height: 100vh;
+  padding: var(--padding-md) var(--padding-sm);
+  transition: transform 300ms ease-in-out;
+
+  //MOBILE
+  @media screen and (max-width: 1024px) {
+    transform: translateX((-100%));
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .test {
+    position: fixed;
+    top: 50%;
+    font-size: 35px;
+    right: -90vw;
+    z-index: 10;
+    background: var(--color_nav_bg);
+    color: var(--color_nav_active);
+    width: 50px;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 5px;
+    border-radius: 100%;
+  }
+
+  nav {
+    position: relative;
+    width: var(--nav-width);
+    height: 100%;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transition: width linear 0.3s;
+    display: flex;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .logo {
+    padding: 0 0.35rem;
+    font-size: 2.2rem;
+    display: flex;
+    background-color: var(--body_page);
+    > img {
+      width: 250px;
+      height: 95px;
+    }
+    .logo_icon {
+      text-align: center;
+      color: var(--color_nav_active);
+    }
+
+    .mobile_cancel_icon {
+      display: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .logo_icon {
+        display: none;
+      }
+
+      .mobile_cancel_icon {
+        display: block;
+        cursor: pointer;
+        font-size: 2.2rem;
+        padding: 0.2rem;
+        color: var(--color_nav_active);
+      }
+    }
+  }
+  .user_name {
+    display: flex;
+    justify-content: end;
+    text-transform: uppercase;
+  }
+
+  .menu_container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--color_nav_not_active);
+      border-radius: 100vw;
+    }
+    .categories {
+      color: var(--color_text);
+      text-decoration: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: var(--margin-xxs);
+
+      svg {
+        font-size: 1.2rem;
+      }
+    }
+
+    .second_category {
+      margin-top: 3rem;
+    }
+  }
+
+  .btn_logout {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    transition: all ease-in-out 200ms;
+    padding: 0.5rem 0.75rem 0 0.75rem;
+
+    svg {
+      font-size: 1.5rem;
+      color: var(--color_nav_active);
+      cursor: pointer;
+      transform: scaleX(-1);
+    }
+  }
+
+  .nav_small {
+    width: 3.2rem;
+
+    .categories {
+      padding: 0 1rem;
+    }
+
+    .description {
+      opacity: 0;
+    }
+
+    .btn_logout {
+      svg {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.navbar_mobile_active {
+  @media screen and (max-width: 1024px) {
+    transform: translateX(0);
+  }
+}
+
+.main_container {
+  max-height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 30px;
+  background-image: url("./../../../assets/uyuni.jpg");
+  width: 100%;
+  max-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
