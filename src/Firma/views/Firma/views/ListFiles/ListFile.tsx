@@ -16,7 +16,7 @@ const columns: ColumnsType<DataType> = [
     title: "Nombre Documento",
     dataIndex: "nombreDoc",
     key: "nombreDoc",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <a className="text_list">{text}</a>,
   },
   {
     title: "Ruta de Documento",

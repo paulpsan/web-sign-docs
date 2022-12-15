@@ -12,21 +12,14 @@
   .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
     color: var(--color_content_primary) !important;
   }
-  .ant-btn {
-    background-color: var(--color_button_form);
-    border-style: none;
-    font-size: large;
-    width: 200px;
-    &:hover {
-      background-color: var(--color_button_form_active);
-    }
-    &:focus {
+  .btn_process{
+    .ant-btn {
       background-color: var(--color_button_form);
-    }
-    .anticon svg {
-      color: var(--color_content_primary);
+      border-style: none;
+      font-size: large;
+      width: 200px;
       &:hover {
-        color: var(--color_content_secundary);
+        background-color: var(--color_button_form_active);
       }
     }
   }

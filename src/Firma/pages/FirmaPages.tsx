@@ -6,6 +6,7 @@ import { Firma } from "../views/Firma/Firma";
 import { FirmasPendientes } from "../views/ListaPendientes/FirmasPendientes";
 import { ListaFirma } from "../views/ListaFirmas/ListaFirma";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { GuiaUser } from "../views/GuiaUser/GuiaUser";
 export const FirmaPages = () => {
   const keycloak = JSON.parse(localStorage.getItem('keycloak')!);
   const [AuthObject, setAuthObject] = useState(keycloak);
@@ -21,6 +22,7 @@ export const FirmaPages = () => {
               <Routes>
                 <Route path="firma" element={<Firma />} />
                 <Route path="lista-firma" element={<ListaFirma />} />
+                <Route path="guia-user" element={<GuiaUser />} />
                 <Route
                   path="firmas-pendientes"
                   element={<FirmasPendientes />}
