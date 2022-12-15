@@ -39,9 +39,7 @@ export const SignatureFile = () => {
       content: '!Revise el nombre de los firmantes antes de confirmar!',
       okText: "Si",
       onOk() {
-        console.log('OK');
         onSignature();
-        //setCurrent(current + 1);
       },
       cancelText: "No",
       onCancel() {
@@ -109,9 +107,11 @@ export const SignatureFile = () => {
                           return false;
                         }}
                       >
-                        <Button type="primary" size="large">
-                          Cargar Certificado
-                        </Button>
+                        <div className="btn_process">
+                          <Button type="primary" size="large">
+                            Cargar Certificado
+                          </Button>
+                        </div>
                       </Upload>
                     </Form.Item>
                     <Form.Item
@@ -177,16 +177,18 @@ export const SignatureFile = () => {
             )}
           </Form.List>
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              size="large"
-              onClick={() => {
-                setmessageState([]);
-              }}
-            >
-              Verificar Firmas
-            </Button>
+            <div className="btn_process">
+              <Button
+                type="primary"
+                htmlType="submit"
+                size="large"
+                onClick={() => {
+                  setmessageState([]);
+                }}
+              >
+                Verificar Firmas
+              </Button>
+            </div>
           </Form.Item>
           <Form.Item>
             {stateFinish ? (

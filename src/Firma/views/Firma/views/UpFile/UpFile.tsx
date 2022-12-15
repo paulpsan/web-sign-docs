@@ -68,9 +68,11 @@ export const UpFile = () => {
             </Dragger>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" size="large" htmlType="submit">
-              Procesar Archivo
-            </Button>
+            <div className="btn_process">
+              <Button type="primary" size="large" htmlType="submit">
+                Procesar Archivo
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>

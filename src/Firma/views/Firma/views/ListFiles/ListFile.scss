@@ -1,10 +1,10 @@
-.content_list{
-    padding: 30px;
+.content_list {
+  padding: 30px;
 }
 .demo-loadmore-list {
   min-height: 350px;
 }
-.button_options{
+.button_options {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -16,14 +16,11 @@
     &:hover {
       background-color: var(--color_button_form_active);
     }
-    &:focus {
-      background-color: var(--color_button_form);
-    }
-    .anticon svg {
-      color: var(--color_content_primary);
-      &:hover {
-        color: var(--color_content_secundary);
-      }
-    }
+  }
+}
+.text_list {
+  color: var(--color_button_form);
+  &:hover {
+    color: var(--color_button_form_active);
   }
 }

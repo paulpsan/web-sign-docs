@@ -1,0 +1,12 @@
+.guia_user_content{  
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    /* flex-flow: row wrap; */ 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: center;
+    background-color: var(--color-body_page);
+    padding: 15px;
+    gap: 5px;
+}

@@ -39,3 +39,12 @@
     }
   }
 }
+
+.ant-menu-title-content{
+  .text_link{
+    color: var(--color_text);
+    &:hover {
+      color: var(--color_text_active);
+    }
+  }
+}

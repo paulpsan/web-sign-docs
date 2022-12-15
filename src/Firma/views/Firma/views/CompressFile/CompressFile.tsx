@@ -5,7 +5,6 @@ import FirmaContext from "../../../../../context/FirmaContext/FirmaContext";
 import compressSignaturePDF from "../../../../../api/CompressFile/CompressFile";
 import { ListPDFSignature } from "../../../../../api/ListFiles/hooks/ListPDFSignature";
 import { StepsContext } from "../../../../../context/StepsContext/StepsContext";
-import endProccessSignature from "../../../../../api/EndProcess/EndProcess";
 interface DataType {
   nombreDoc: string;
   rutaDoc: number;
@@ -29,7 +28,7 @@ export const CompressFile = () => {
       dataIndex: "nombreDoc",
       key: "nombreDoc",
       render: (_, record) => (
-        <a onClick={() => showModal(record)}>{record.nombreDoc}</a>
+        <a className="text_list" onClick={() => showModal(record)}>{record.nombreDoc}</a>
       ),
     },
     {
