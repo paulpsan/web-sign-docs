@@ -13,8 +13,11 @@ interface DataType {
 }
 
 export const ListaFirma = () => {
+/* A destructuring assignment. It is a way to extract data from arrays or objects into distinct
+variables. */
   const { list_files, isLoadingZIP } = ListZIP();
   
+  /* A way to extract data from arrays or objects into distinct variables. */
   const columns: ColumnsType<DataType> = [
     {
       title: "Nombre Documento",
@@ -57,6 +60,12 @@ export const ListaFirma = () => {
       ),
     }
   ];
+  /**
+   * GetDataFile is a function that takes two arguments, nombreDoc and extDoc, and returns a function
+   * that takes no arguments.
+   * @param {any} nombreDoc - is the name of the file
+   * @param {any} extDoc - "pdf"
+   */
   const getDataFile = ( nombreDoc:any, extDoc:any ) => {
     const nameFile = nombreDoc+"."+extDoc.toLowerCase();
     downloadZIP(nameFile);

@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import { FaTimes } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
-import { MdAllInbox, MdOutlineAccountBalance, MdOutlineLogout, MdRestore, MdSubdirectoryArrowRight } from "react-icons/md";
+import { MdAllInbox, MdOutlineAccountBalance, MdOutlineLogout, MdSubdirectoryArrowRight } from "react-icons/md";
 import { MenuItem } from "../MenuItem/MenuItem";
+import { OptionUser } from "../OptionUser/OptionUser";
 import logo_bfo from "./../../../assets/LOGO_FONDO_BLANCO_RGB-01-SF.png";
 import logo_mini_bfo from "./../../../assets/mini_logo_bfo.png";
 import NavContext from "../../../context/NavContext/NavContext";
 import "./SideBar.scss";
-import { OptionUser } from "../OptionUser/OptionUser";
 
 export const SideBar = ({ children }: any) => {
+/* Destructuring the nav and setNav from the NavContext. */
   const { nav, setNav }: any = useContext(NavContext);
   return (
     <>

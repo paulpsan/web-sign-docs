@@ -5,10 +5,13 @@ import { AppRouter } from './routers/AppRouter';
 import { AuthProvider } from './context/AuthContext/AuthContext';
 import UserService from "./services/UserService";
 
+/**
+ * If the user is not logged in, then log them in. If they are logged in, then render the app.
+ * @returns The return value of the function is the return value of the last statement.
+ */
 function App() {
   return (
     <>
-      {console.log(UserService.isLoggedIn())}
       {!UserService.isLoggedIn() ? UserService.doLogin() :
         <BrowserRouter>
           <AuthProvider>

@@ -5,22 +5,39 @@ import { signaturePDF, StateVerific, verifSignature } from "../../../../../api/S
 import { addSignatory } from "../../../../../api/Signatory/Signatory";
 import { addSignature } from "../../../../../api/Signature/Signature";
 import FirmaContext from "../../../../../context/FirmaContext/FirmaContext";
-import { StepsContext } from "../../../../../context/StepsContext/StepsContext";
 import "./SignatureFile.scss";
 const { confirm } = Modal;
 export const SignatureFile = () => {
+/* A destructuring assignment. */
   const { setFirma }: any = useContext(FirmaContext);
-  const { current, setCurrent }: any = useContext(StepsContext);
+/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
+function components. */
   const [messageState, setmessageState] = useState<string[]>([]);
+/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
+function components. */
   const [stateFinish, setstateFinish] = useState<boolean>(false);
+/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
+function components. */
   const [dataInfo, setdataInfo] = useState<Object[]>([]);
+/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
+function components. */
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
+  /**
+   * If the argument is an array, return the argument. If the argument is an object, return the
+   * fileList property of the argument.
+   * @param {any} e - events 
+   * @returns the fileList array.
+   */
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
       return e;
     }
     return e && e.fileList;
   };
+  /**
+   * "verificSignaure" is a function that takes in a parameter called "values" and returns a promise
+   * @param {any} values - any = {
+   */
   const verificSignaure = async (values: any) => {
     const verif_signature = verifSignature(values);
     verif_signature.then((resp) => {
@@ -31,6 +48,10 @@ export const SignatureFile = () => {
     forceUpdate();
     setdataInfo(values.users);
   };
+  /**
+   * ShowConfirm() is a function that displays a modal window with a title, content, and two buttons,
+   * one of which calls the onSignature() function.
+   */
   const showConfirm = () => {
     confirm({
       width:"500px",
@@ -43,10 +64,14 @@ export const SignatureFile = () => {
       },
       cancelText: "No",
       onCancel() {
-        console.log('Cancel');
       },
     });
   };
+  /**
+   * "onSignature" is a function that sets the state of "firma" to the length of the "dataInfo" array,
+   * then calls the "signaturePDF" function, then calls the "addSignature" function, which returns a
+   * promise that calls the "addSignatory" function.
+   */
   const onSignature = async () => {
     setFirma(dataInfo.length);
     signaturePDF(dataInfo);
@@ -210,9 +235,6 @@ export const SignatureFile = () => {
                     onClick={ () => {
                       showConfirm()
                     }}
-                    //onClick={() => {
-                    //  onSignature(), setCurrent(current + 1);
-                    //}}
                   >
                     Firmar Documentos
                   </Button>

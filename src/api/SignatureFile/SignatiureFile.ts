@@ -1,6 +1,13 @@
 import { message } from "antd";
 import ms_signature from "../ms-signature";
 
+/**
+ * It takes an array of objects, each object has a file and a password, the function sends the file and
+ * password to the server, the server returns a message, the function returns an array of messages.
+ * </code>
+ * @param {any} values - any = {
+ * @returns An array of messages.
+ */
 export async function verifSignature(values: any) {
     const messageState: any = [];
     for (let index = 0; index < values.users.length; index++) {
@@ -9,7 +16,7 @@ export async function verifSignature(values: any) {
         formData.append("files", element.file[0].originFileObj);
         formData.append("password", element.password);
         await ms_signature
-            .post("/verif_firma", formData)
+            .post("/certificate_verification", formData)
             .then((resp) => {
                 message.info(resp.data);
                 messageState.push(resp.data);
@@ -20,6 +27,12 @@ export async function verifSignature(values: any) {
     }
     return messageState
 }
+/**
+ * It returns true if all the elements in the array are equal to "Contraseña Verificada", otherwise it
+ * returns false.
+ * @param {string[]} array_state - is an array of strings that contains the state of the password.
+ * @returns A function that takes an array of strings as an argument and returns a boolean.
+ */
 export function StateVerific(array_state:string[]) {
     let verfi = 0;
     for (let index = 0; index < array_state.length; index++) {
@@ -34,6 +47,10 @@ export function StateVerific(array_state:string[]) {
         return false 
     }
 }
+/**
+ * It takes an array of objects, and for each object in the array, it makes a POST request to a server
+ * @param {any} dataInfo - is an array of objects that contains the following properties:
+ */
 export async function signaturePDF(dataInfo: any) {
     for (let index = 0; index < dataInfo.length; index++) {
         var formDataF = new FormData();
@@ -45,7 +62,7 @@ export async function signaturePDF(dataInfo: any) {
         formDataF.append("x", index == 0 ? "50" : "350");
         formDataF.append("y", "50");
         await ms_signature
-            .post("/firma_files_pdf", formDataF)
+            .post("/signed_files_pdf", formDataF)
             .then((resp) => {
                 resp.data.message == "ok"
                     ? message.success("Archivo firmados Correctamente")
@@ -56,4 +73,3 @@ export async function signaturePDF(dataInfo: any) {
             });
     }
 }
-

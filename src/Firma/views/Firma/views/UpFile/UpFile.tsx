@@ -1,21 +1,26 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { Button, Form, Upload } from "antd";
 import { unZipFiles } from "../../../../../api/UpFiles/UpFile";
 import type { UploadFile, UploadProps } from "antd/es/upload/interface";
-import "./UpFile.scss";
-import { StepsContext } from "../../../../../context/StepsContext/StepsContext";
 const { Dragger } = Upload;
-
+import "./UpFile.scss";
 export const UpFile = () => {
-  const { current, setCurrent }: any = useContext(StepsContext);
+/* A React Hook that is used to store the state of the fileList array. */
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+  /**
+   * If the argument is an array, return the argument. If the argument is an object, return the
+   * fileList property of the argument.
+   * @param {any} e - any -&gt; The event that is triggered when the file is uploaded.
+   * @returns the fileList array.
+   */
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
       return e;
     }
     return e && e.fileList;
   };
+  /* A constant that is being assigned to the props of the Dragger component. */
   const props: UploadProps = {
     onRemove: (file) => {
       const index = fileList.indexOf(file);
@@ -29,9 +34,12 @@ export const UpFile = () => {
     },
     fileList,
   };
+  /**
+   * The function unZipFiles is called with the values parameter, which is of type any.
+   * @param {any} values - The values of the form.
+   */
   const onFinish = (values: any) => {
     unZipFiles(values);
-    //setCurrent(current + 1);
   };
   return (
     <>

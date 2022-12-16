@@ -1,10 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 import { Button, Modal, Table, Tag } from "antd";
+import { ListPDFSignature } from "../../../../../api/ListFiles/hooks/ListPDFSignature";
 import type { ColumnsType } from "antd/es/table";
 import FirmaContext from "../../../../../context/FirmaContext/FirmaContext";
 import compressSignaturePDF from "../../../../../api/CompressFile/CompressFile";
-import { ListPDFSignature } from "../../../../../api/ListFiles/hooks/ListPDFSignature";
-import { StepsContext } from "../../../../../context/StepsContext/StepsContext";
 interface DataType {
   nombreDoc: string;
   rutaDoc: number;
@@ -12,16 +11,17 @@ interface DataType {
   base64_pdf: string;
 }
 export const CompressFile = () => {
-  const { firma, id_signature }: any = useContext(FirmaContext);
-  const { current, setCurrent }: any = useContext(StepsContext);
+/* A hook that is used to get the firma object. */
+  const { firma }: any = useContext(FirmaContext);  
+/* A hook that is used to list the files of a signature. */
   const { isLoadingSigature, list_files } = ListPDFSignature({ firma });
+/* A state that is used to open the modal. */
   const [open, setOpen] = useState(false);
+  /* A state that is an array of objects that are the columns of the table. */
   const [DataView, setDataView]: any = useState<DataType[]>([]);
-  //const [isModalOpen, setIsModalOpen] = useState(false);
-  //const [value, setValue] = useState(0);
-  //const [DataZIP, setDataZIP] = useState<DataType[]>([]);
-  //const [inputName, setinputName] = useState("");
-
+/* Saving the firma object in localStorage. */
+  localStorage.setItem('folder_firma', JSON.stringify(firma))
+  /* A constant that is an array of objects that are the columns of the table. */
   const columns: ColumnsType<DataType> = [
     {
       title: "Nombre Documento",
@@ -49,27 +49,27 @@ export const CompressFile = () => {
       ),
     },
   ];
+  /**
+   * I'm going to compress the signature PDF and then download it.
+   */
   const dowloadZIP = async () => {
     compressSignaturePDF(firma);
   };
+  /**
+   * OnCompress() is a function that sets the state of the open variable to false.
+   */
   const onCompress = () => {
     setOpen(false);
   };
+  /**
+   * ShowModal is a function that takes a dataView as a parameter and sets the dataView state to the
+   * dataView parameter and sets the open state to true.
+   * @param {any} dataView - any - this is the data that is passed to the modal.
+   */
   const showModal = (dataView: any) => {
     setDataView(dataView);
     setOpen(true);
   };
-
-  // const showModal_confirm = () => {
-  //   setIsModalOpen(true);
-  // };
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
-  // };
-  // const onChange = (e: RadioChangeEvent) => {
-  //   console.log("radio checked", e.target.value);
-  //   setValue(e.target.value);
   return (
     <div className="content_list">
       <Table
@@ -81,29 +81,9 @@ export const CompressFile = () => {
         loading={isLoadingSigature}
       />
       <div className="button_options">
-      {/* <Button
-          type="primary"
-          danger
-          size="large"
-          onClick={() => {
-            setCurrent(0);
-          }}
-        >
-          Cancelar
-        </Button> */}
         <Button type="primary" size="large" onClick={dowloadZIP}>
           Descargar Documentos
         </Button>
-        {/* <Button
-          type="primary"
-          size="large"
-          onClick={() => {
-            setCurrent(0),
-            endProccessSignature()
-          }}
-        >
-          Terminar Proceso
-        </Button> */}
       </div>
       <Modal
         title="Visualizacion de Documentos Firmados"
@@ -119,39 +99,6 @@ export const CompressFile = () => {
           height="375"
         />
       </Modal>
-      {/* <Modal
-        title="Mensaje de Información"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <Space direction="horizontal">
-          <Tag color="green">
-            <h3>
-              ¿Antes de terminar el proceso, los documentos requieren otra
-              firma?
-            </h3>
-          </Tag>
-        </Space>
-        <br />
-        <br />
-        <br />
-        <Radio.Group onChange={onChange} value={value}>
-          <Space direction="horizontal">
-            <Radio value={0}>NO</Radio>
-            <Radio value={1}>
-              SI
-              {value === 1 ? (
-                <Input
-                  placeholder="Ingrese el nombre del usuario con firma faltante"
-                  style={{ width: 200, marginLeft: 20 }}
-                  onChange={(e) => setinputName(e.target.value)}
-                />
-              ) : null}
-            </Radio>
-          </Space>
-        </Radio.Group>
-      </Modal> */}
     </div>
   );
 };

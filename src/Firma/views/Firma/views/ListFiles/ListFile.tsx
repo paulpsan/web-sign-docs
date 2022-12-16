@@ -1,16 +1,15 @@
-import { Avatar, Button, List, Skeleton, Space, Table, Tag } from "antd";
-import React, { useContext, useEffect } from "react";
+import { Table, Tag } from "antd";
+import { ListPDF } from "../../../../../api/ListFiles/hooks/ListPDF";
 import type { ColumnsType } from "antd/es/table";
 import "./ListFile.scss";
-import axios from "axios";
-import { ListPDF } from "../../../../../api/ListFiles/hooks/ListPDF";
-import { StepsContext } from "../../../../../context/StepsContext/StepsContext";
+/* Defining the type of data that will be used in the table. */
 interface DataType {
   key: string;
   nombreDoc: string;
   rutaDoc: number;
   extDoc: string;
 }
+/* Defining the columns of the table. */
 const columns: ColumnsType<DataType> = [
   {
     title: "Nombre Documento",
@@ -37,8 +36,8 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 export const ListFile = () => {
+/* Destructuring the object returned by the hook. */
   const { isLoadingA, list_files } = ListPDF();
-  const { current, setCurrent }: any = useContext(StepsContext);
   return (
     <div className="content_list">
       <Table
@@ -49,27 +48,6 @@ export const ListFile = () => {
         size="large"
         loading={isLoadingA}
       />
-      {/* <div className="button_options">
-      <Button
-          type="primary"
-          danger
-          size="large"
-          onClick={() => {
-            setCurrent(0);
-          }}
-        >
-          Cancelar
-        </Button>
-        <Button
-          type="primary"
-          size="large"
-          onClick={() => {
-            setCurrent(current + 1);
-          }}
-        >
-          Siguiente
-        </Button>
-      </div> */}
     </div>
   );
 };

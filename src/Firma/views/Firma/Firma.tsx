@@ -1,19 +1,18 @@
 import { Button, notification, Steps, Modal } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 import { TitlePage } from "../../../UI/components/TitlePage/TitlePage";
-import "./Firma.scss";
 import { ListFile } from "./views/ListFiles/ListFile";
 import { SignatureFile } from "./views/SignatureFile/SignatureFile";
 import { UpFile } from "./views/UpFile/UpFile";
 import { ExclamationCircleOutlined, FileProtectOutlined } from "@ant-design/icons";
 import { CompressFile } from "./views/CompressFile/CompressFile";
-import { NotificationPlacement } from "antd/lib/notification";
 import { FirmaProvider } from "../../../context/FirmaContext/FirmaContext";
-import endProccessSignature from "../../../api/EndProcess/EndProcess";
-import { Footer } from "antd/lib/layout/layout";
 import { StepsContext } from "../../../context/StepsContext/StepsContext";
+import endProccessSignature from "../../../api/EndProcess/EndProcess";
+import cancelProcessSignature from "../../../api/EndProcess/CancelProcess";
 const { confirm } = Modal;
-
+import "./Firma.scss";
+/* An array of objects. */
 const steps = [
   {
     title: "Paso 1",
@@ -33,16 +32,23 @@ const steps = [
   },
 ];
 export const Firma = () => {
+/* A hook that is used to create a notification. */
   const [api, contextHolder] = notification.useNotification();
+/* A hook that is used to create a notification. */
   const [current, setCurrent] = useState(0);
+/* A hook that is used to create a notification. */
   const valueSteps = { current, setCurrent };
+  /**
+   * The next function increments the current variable by 1.
+   */
   const next = () => {
     setCurrent(current + 1);
   };
-  const prev = () => {
-    setCurrent(current - 1);
-  };
+/* Creating an array of objects. */
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
+  /**
+   * It's a function that shows a modal with a title, a message, and two buttons.
+   */
   const showConfirm = () => {
     confirm({
       width:"500px",
@@ -52,8 +58,8 @@ export const Firma = () => {
       okText: "Si",
       onOk() {
         console.log('OK');
+        cancelProcessSignature();
         setCurrent(0);
-        endProccessSignature();
       },
       cancelText: "No",
       onCancel() {
@@ -98,7 +104,8 @@ export const Firma = () => {
           <Button
             type="primary"
             onClick={() => {
-              setCurrent(0), endProccessSignature();
+              setCurrent(0);
+              endProccessSignature();
             }}
             size={"large"}
           >
