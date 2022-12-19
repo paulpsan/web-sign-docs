@@ -50,6 +50,7 @@ export const UpFile = () => {
           onFinish={onFinish}
           autoComplete="off"
           layout="vertical"
+          id="unzip_files"
         >
           <Form.Item
             name={"file"}

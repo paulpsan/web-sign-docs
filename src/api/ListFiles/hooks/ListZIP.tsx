@@ -16,9 +16,10 @@ export const ListZIP = () => {
      */
     const getFiles = async () => {
         const myArray = preferred_username.split('@');
-        var formData = new FormData();
-        formData.append("nameFolder", myArray[0]);
-        await ms_signature.post('/zip_signature', formData)
+        const data = JSON.stringify({
+            "nameFolder": myArray[0]
+        });
+        await ms_signature.post('/zip_signature', data, { headers:{ 'Content-Type': 'application/json' } })
             .then( (res) => {
                 setlist_files(res.data);
                 setisLoadingZIP(false);

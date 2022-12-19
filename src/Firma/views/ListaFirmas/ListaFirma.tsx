@@ -48,7 +48,7 @@ variables. */
       key: "size_file",
     },
     {
-      title: "Tipo de Documento",
+      title: "Acción",
       key: "extDoc",
       dataIndex: "extDoc",
       render: (_, record) => (

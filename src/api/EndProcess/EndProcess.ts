@@ -6,16 +6,17 @@ import ms_signature from "../ms-signature";
  * It takes a FormData object, appends some data to it, and then sends it to an API endpoint.
  */
 export default function endProccessSignature() {
-    var formdata = new FormData();
     const date = new Date()
     const carpetaFinal = JSON.parse(localStorage.getItem("folder_firma")!) - 1;
     const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
     const fecha_compress = moment(date).format("DD_MM_YYYY_HH_mm_ss");
     const name_zip = preferred_username + "_" + fecha_compress;
-    formdata.append("name_zip", name_zip);
-    formdata.append("name_folder_user", preferred_username);
-    formdata.append("folder_final", carpetaFinal.toString());
-    ms_signature.post('/end_process', formdata )
+    const data = JSON.stringify({
+        "name_zip":name_zip,
+        "name_folder_user":preferred_username,
+        "folder_final":carpetaFinal.toString()
+    });
+    ms_signature.post('/end_process_signature', data, { headers: { 'Content-Type': 'application/json' } })
         .then(() => {
             message.success("Proceso de Firma Digital Terminado.");
             localStorage.removeItem('folder_firma');

@@ -14,7 +14,7 @@ body {
   --padding-xxs: 0.5rem;
 
   overflow: hidden;
-  background-color: rgb(240, 244, 248);
+  background-color: var(--color-body_page);
 }
 .container_app {
   display: flex;

@@ -8,14 +8,14 @@ import ms_signature from "../ms-signature";
  * @param {any} nameZip - any =&gt; name of the file to download
  */
 export default function downloadZIP( nameZip: any ){
-    var formdata = new FormData();
     const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
     const nameZipData = nameZip;
     const myArray = preferred_username.split('@');
-
-    formdata.append("nameFile", nameZipData);
-    formdata.append("nameFolder", myArray[0]);
-    ms_signature.post('/dowload_file', formdata, { responseType: "blob" })
+    const data = JSON.stringify({
+        "nameFile":nameZipData,
+        "nameFolder":myArray[0]
+    });
+    ms_signature.post('/download_zip_signature', data, { responseType: "blob", headers: { 'Content-Type': 'application/json' }})
         .then( ({ data }) => {
             fileDownload(data, nameZipData)
             message.success("Archivo descargado.")

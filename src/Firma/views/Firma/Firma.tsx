@@ -90,6 +90,7 @@ export const Firma = () => {
               style={{ margin: "0 8px" }}
               onClick={() => showConfirm()}
               size={"large"}
+              htmlType="submit"
             >
               Cancelar Proceso
             </Button>
