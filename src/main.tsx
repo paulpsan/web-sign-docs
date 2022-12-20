@@ -4,17 +4,17 @@ import ReactDOM from 'react-dom';
 import UserService from "./services/UserService";
 import HttpService from './services/HttpService';
 
-/* Getting the root element from the index.html file. */
+/* Obtener el elemento raíz del archivo index.html. */
 const root = document.getElementById('root');
 
 /**
- * The renderApp function is a function that renders the App component to the root element.
+ * La función renderApp es una función que representa el componente de la aplicación en el elemento raíz.
  */
 const renderApp = () => {
   ReactDOM.render( <App />, root );
 }
-/* Initializing the Keycloak service and then calling the renderApp function. */
+/* Inicializar el servicio Keycloak y luego llamar a la función renderApp. */
 UserService.initKeycloak(renderApp); 
 
-/* Configuring the HttpService to use the Keycloak token. */
+/* Configurando HttpService para usar el token Keycloak. */
 HttpService.configure();

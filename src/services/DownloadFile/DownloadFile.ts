@@ -1,11 +1,10 @@
 import { message } from "antd";
 import fileDownload from "js-file-download";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes a string as an argument, and then it sends a POST request to the server with the string as
- * a parameter.
- * @param {any} nameZip - any =&gt; name of the file to download
+ * Toma una cadena como argumento y luego envía una solicitud POST al servidor con la cadena como
+ * un parametro.
+ * @param {any} nameZip - any =&gt; nombre del archivo a descargar
  */
 export default function downloadZIP( nameZip: any ){
     const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);

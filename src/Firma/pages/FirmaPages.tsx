@@ -8,15 +8,15 @@ import { GuiaUser } from "../views/GuiaUser/GuiaUser";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import NavContext from "../../context/NavContext/NavContext";
 export const FirmaPages = () => {
-/* Getting the keycloak object from local storage. */
+/* Obtener el objeto keycloak del almacenamiento local. */
   const keycloak = JSON.parse(localStorage.getItem('keycloak')!);
-/* Setting the keycloak object to the AuthObject state. */
+/* Establecer el objeto keycloak en el estado AuthObject. */
   const [AuthObject, setAuthObject] = useState(keycloak);
-/* A state variable that is used to toggle the sidebar. */
+/* Una variable de estado que se utiliza para alternar la barra lateral. */
   const [nav, setNav] = useState(true);
-/* Creating an object with the properties nav and setNav. */
+/* Creando un objeto con las propiedades nav y setNav. */
   const value_nav = { nav, setNav };
-/* Creating an object with the properties AuthObject and setAuthObject. */
+/* Crear un objeto con las propiedades AuthObject y setAuthObject. */
   const value_auth = { AuthObject, setAuthObject };
   return (
     <>

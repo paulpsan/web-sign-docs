@@ -1,9 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 import { Button, Modal, Table, Tag } from "antd";
-import { ListPDFSignature } from "../../../../../api/ListFiles/hooks/ListPDFSignature";
+import { ListPDFSignature } from "../../../../../services/ListFiles/hooks/ListPDFSignature";
 import type { ColumnsType } from "antd/es/table";
 import FirmaContext from "../../../../../context/FirmaContext/FirmaContext";
-import compressSignaturePDF from "../../../../../api/CompressFile/CompressFile";
+import compressSignaturePDF from "../../../../../services/CompressFile/CompressFile";
 interface DataType {
   nombreDoc: string;
   rutaDoc: number;
@@ -11,17 +11,17 @@ interface DataType {
   base64_pdf: string;
 }
 export const CompressFile = () => {
-/* A hook that is used to get the firma object. */
+/* Un hook que accede al contexto en base a componentes anteriores dentro del contexto firma */
   const { firma }: any = useContext(FirmaContext);  
-/* A hook that is used to list the files of a signature. */
+/* Hook para obtener la lista de los archovos PDF firmados */
   const { isLoadingSigature, list_files } = ListPDFSignature({ firma });
-/* A state that is used to open the modal. */
+/* Hook que controla el satado del modal. */
   const [open, setOpen] = useState(false);
-  /* A state that is an array of objects that are the columns of the table. */
+  /* Hook que controla el estado de array view */
   const [DataView, setDataView]: any = useState<DataType[]>([]);
-/* Saving the firma object in localStorage. */
+/* Guardando el objeto de firma en localStorage. */
   localStorage.setItem('folder_firma', JSON.stringify(firma))
-  /* A constant that is an array of objects that are the columns of the table. */
+  /* Una constante que es una matriz de objetos que son las columnas de la tabla. */
   const columns: ColumnsType<DataType> = [
     {
       title: "Nombre Documento",
@@ -50,21 +50,21 @@ export const CompressFile = () => {
     },
   ];
   /**
-   * I'm going to compress the signature PDF and then download it.
+   * dowloadZIP es una funcionque comprimir el PDF de la firma y luego lo descarga.
    */
   const dowloadZIP = async () => {
     compressSignaturePDF(firma);
   };
   /**
-   * OnCompress() is a function that sets the state of the open variable to false.
+   * OnCompress() es una función que establece el estado de la variable abierta en falso.
    */
   const onCompress = () => {
     setOpen(false);
   };
   /**
-   * ShowModal is a function that takes a dataView as a parameter and sets the dataView state to the
-   * dataView parameter and sets the open state to true.
-   * @param {any} dataView - any - this is the data that is passed to the modal.
+   * ShowModal es una función que toma un dataView como parámetro y establece el estado de dataView en el
+   * dataView parámetro y establece el estado abierto en verdadero.
+   * @param {any} dataView - any - estos son los datos que se pasan al modal.
    */
   const showModal = (dataView: any) => {
     setDataView(dataView);

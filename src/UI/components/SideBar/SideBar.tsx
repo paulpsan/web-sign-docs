@@ -10,7 +10,7 @@ import NavContext from "../../../context/NavContext/NavContext";
 import "./SideBar.scss";
 
 export const SideBar = ({ children }: any) => {
-/* Destructuring the nav and setNav from the NavContext. */
+/* Desestrucutra las propiedades del contexto Nav */
   const { nav, setNav }: any = useContext(NavContext);
   return (
     <>

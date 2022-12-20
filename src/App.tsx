@@ -6,8 +6,8 @@ import { AuthProvider } from './context/AuthContext/AuthContext';
 import UserService from "./services/UserService";
 
 /**
- * If the user is not logged in, then log them in. If they are logged in, then render the app.
- * @returns The return value of the function is the return value of the last statement.
+ * Si el usuario no ha iniciado sesión, regístrelo. Si ha iniciado sesión, renderice la aplicación.
+ * @returns El valor de retorno de la función es el valor de retorno de la última instrucción.
  */
 function App() {
   return (

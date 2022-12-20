@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { Button, Form, Upload } from "antd";
-import { unZipFiles } from "../../../../../api/UpFiles/UpFile";
+import { unZipFiles } from "../../../../../services/UpFiles/UpFile";
 import type { UploadFile, UploadProps } from "antd/es/upload/interface";
 const { Dragger } = Upload;
 import "./UpFile.scss";
 export const UpFile = () => {
-/* A React Hook that is used to store the state of the fileList array. */
+/* hook que controla el estado de fileList array. */
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   /**
-   * If the argument is an array, return the argument. If the argument is an object, return the
-   * fileList property of the argument.
-   * @param {any} e - any -&gt; The event that is triggered when the file is uploaded.
-   * @returns the fileList array.
+   *Si el argumento es una matriz, devuelve el argumento. Si el argumento es un objeto, devuelve el
+   * fileList propiedad del argumento.
+   * @param {any} e - any -&gt; TEl evento que se activa cuando se carga el archivo.d.
+   * @returns la matriz de lista de archivos.
    */
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -20,7 +20,7 @@ export const UpFile = () => {
     }
     return e && e.fileList;
   };
-  /* A constant that is being assigned to the props of the Dragger component. */
+  /* Una constante que se asigna a los accesorios del componente Arrastrador. */
   const props: UploadProps = {
     onRemove: (file) => {
       const index = fileList.indexOf(file);
@@ -35,8 +35,8 @@ export const UpFile = () => {
     fileList,
   };
   /**
-   * The function unZipFiles is called with the values parameter, which is of type any.
-   * @param {any} values - The values of the form.
+   * La función unZipFiles se llama con el parámetro de valores, que es de tipo cualquiera.
+   * @param {any} values - Valores abstraidos dentro del form
    */
   const onFinish = (values: any) => {
     unZipFiles(values);

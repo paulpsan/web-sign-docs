@@ -1,11 +1,10 @@
 import { message } from "antd";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes two parameters, one is a number and the other is a string, and then it sends a POST request
- * to a server with the parameters as the body of the request.
- * @param {any} nro_firmas - number of signatures
- * @param {any} id_signature - is the id of the process
+ * Toma dos parámetros, uno es un número y el otro es una cadena, y luego envía una solicitud POST
+ * a un servidor con los parámetros como el cuerpo de la solicitud.
+ * @param {any} nro_firmas - número de firmas
+ * @param {any} id_signature - es el id del proceso
  */
 export async function addSignatory(nro_firmas: any, id_signature: any) {
     const date = new Date()

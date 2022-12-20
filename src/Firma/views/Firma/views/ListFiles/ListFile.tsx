@@ -1,15 +1,15 @@
 import { Table, Tag } from "antd";
-import { ListPDF } from "../../../../../api/ListFiles/hooks/ListPDF";
+import { ListPDF } from "../../../../../services/ListFiles/hooks/ListPDF";
 import type { ColumnsType } from "antd/es/table";
 import "./ListFile.scss";
-/* Defining the type of data that will be used in the table. */
+/* Definición del tipo de datos que se utilizarán en la tabla. */
 interface DataType {
   key: string;
   nombreDoc: string;
   rutaDoc: number;
   extDoc: string;
 }
-/* Defining the columns of the table. */
+/* Definición de las columnas de la tabla. */
 const columns: ColumnsType<DataType> = [
   {
     title: "Nombre Documento",
@@ -36,7 +36,7 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 export const ListFile = () => {
-/* Destructuring the object returned by the hook. */
+/* Desestrucutrando el objeto devuelto por el hook. */
   const { isLoadingA, list_files } = ListPDF();
   return (
     <div className="content_list">

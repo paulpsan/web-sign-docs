@@ -1,10 +1,9 @@
 import { message } from "antd";
 import fileDownload from "js-file-download";
 import moment from "moment";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes a number, converts it to a string, and sends it to the server.
+ * Toma un número, lo convierte en una cadena y lo envía al servidor.
  * @param {any} firma - number
  */
 export default function compressSignaturePDF(firma: any) {

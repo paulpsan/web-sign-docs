@@ -1,12 +1,12 @@
 import React, { createContext, useEffect, useState } from 'react'
 
-/* Creating a context object. */
+/* Creación de un objeto de contexto. */
 export const StepsContext = createContext({});
 
 /**
- * StepsProvider is a function that takes in a children prop and returns a StepsContext.Provider
- * component that has a value prop that is an object with a current and setCurrent property.
- * @param {any}  - any -&gt; this is a typescript syntax that means that the parameter can be of any
+ * StepsProvider es una función que toma un accesorio para niños y devuelve un StepsContext.Provider
+ * componente que tiene una propiedad de valor que es un objeto con una propiedad actual y setCurrent.
+ * @param {children}  - any -&gt; esta es una sintaxis mecanografiada que significa que el parámetro puede ser de cualquier
  * type.
  * @returns The children of the component.
  */

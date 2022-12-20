@@ -1,8 +1,7 @@
 import { message } from "antd";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It sends a request to the server to delete a folder in the server.
+ * Envía una solicitud al servidor para limpiar una carpeta en el servidor.
  */
 export default function cancelProcessSignature() {
     ms_signature.post('/cancel_process_signature')

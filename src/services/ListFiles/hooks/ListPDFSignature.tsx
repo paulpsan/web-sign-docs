@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import ms_signature from '../../ms-signature';
+import ms_signature from '../../../api/ms-signature';
 
 export const ListPDFSignature = ({ firma }: any) => {
     const [isLoadingSigature, setisLoadingSigature] = useState(true);
     const [list_files, setlist_files] = useState([])    
     /**
-     * I'm sending a formData object to the server, and then I'm getting a response from the server,
-     * and then I'm setting the state of the component with the response.
+     * Estoy enviando un objeto formData al servidor y luego recibo una respuesta del servidor,
+     * y luego estoy configurando el estado del componente con la respuesta.
      */
     const getFiles = async () => {
         const carpetaFinal = firma - 1;
@@ -24,7 +24,7 @@ export const ListPDFSignature = ({ firma }: any) => {
             });
         
     };
-    /* It's a hook that runs when the component is mounted. */
+    /* Es un gancho que se ejecuta cuando se monta el componente. */
     useEffect(() => {
         getFiles()
     }, []);

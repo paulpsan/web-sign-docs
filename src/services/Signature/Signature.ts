@@ -1,10 +1,9 @@
 import { message } from "antd";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes a number, makes a post request to a microservice, and returns the id of the post request.
- * @param {any} nro_firmas - number of signatures
- * @returns The id of the signature process.
+ * Toma un número, realiza una solicitud de publicación a un microservicio y devuelve la identificación de la solicitud de publicación.
+ * @param {any} nro_firmas - número de firmas
+ * @returns El id del proceso de firma.
  */
 export async function addSignature(nro_firmas: any) {
     const date = new Date()

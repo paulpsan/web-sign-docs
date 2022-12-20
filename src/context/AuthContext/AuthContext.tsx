@@ -1,14 +1,14 @@
 import { createContext, useState } from 'react'
 
-/* Creating a context object that is going to be used to pass data down to the components that are
-wrapped in the AuthProvider. */
+/* Crear un objeto de contexto que se utilizará para pasar datos a los componentes que están
+envuelto en el AuthProvider. */
 const AuthContext = createContext({});
 
 /**
- * AuthProvider is a function that takes in a children prop and returns a AuthContext.Provider
- * component that has a value prop that is an object with an auth and setAuth property.
- * @param {any}  - any -&gt; this is the type of the props that are passed to the component
- * @returns The AuthProvider is returning a function that returns a function that returns a function
+ * AuthProvider es una función que toma un accesorio para niños y devuelve un AuthContext.Provider
+ * componente que tiene una propiedad de valor que es un objeto con una propiedad auth y setAuth.
+ * @param {children}  - any -&gt; es como parametro un componente hijo que heredara
+ * @returns El AuthProvider devuelve una función que devuelve una función que devuelve una función
  */
 export const AuthProvider = ({ children }: any) => {
     const [auth, setAuth] = useState(undefined);

@@ -1,32 +1,28 @@
 import { ExclamationCircleOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Alert, Button, Form, Input, Space, Upload, Modal } from "antd";
 import { useReducer, useState, useContext } from "react";
-import { signaturePDF, StateVerific, verifSignature } from "../../../../../api/SignatureFile/SignatiureFile";
-import { addSignatory } from "../../../../../api/Signatory/Signatory";
-import { addSignature } from "../../../../../api/Signature/Signature";
+import { signaturePDF, StateVerific, verifSignature } from "../../../../../services/SignatureFile/SignatiureFile";
+import { addSignatory } from "../../../../../services/Signatory/Signatory";
+import { addSignature } from "../../../../../services/Signature/Signature";
 import FirmaContext from "../../../../../context/FirmaContext/FirmaContext";
 import "./SignatureFile.scss";
 const { confirm } = Modal;
 export const SignatureFile = () => {
-/* A destructuring assignment. */
+/* Acceso a las varibales del contexto dentro de Firma Context. */
   const { setFirma }: any = useContext(FirmaContext);
-/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
-function components. */
+/* Hook que controla el estado del messageState */
   const [messageState, setmessageState] = useState<string[]>([]);
-/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
-function components. */
+/* Hook que controla el estaod del stateFinish */
   const [stateFinish, setstateFinish] = useState<boolean>(false);
-/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
-function components. */
+/* Hook que controla el stado del dataInfo */
   const [dataInfo, setdataInfo] = useState<Object[]>([]);
-/* A React Hook. It is a function that lets you “hook into” React state and lifecycle features from
-function components. */
+/* Hook que actualiza el componente a visualizar. */
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   /**
-   * If the argument is an array, return the argument. If the argument is an object, return the
-   * fileList property of the argument.
+   * Si el argumento es una matriz, devuelve el argumento. Si el argumento es un objeto, devuelve el
+   * propiedad fileList del argumento.
    * @param {any} e - events 
-   * @returns the fileList array.
+   * @returns un fileList array.
    */
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -35,7 +31,7 @@ function components. */
     return e && e.fileList;
   };
   /**
-   * "verificSignaure" is a function that takes in a parameter called "values" and returns a promise
+   * "verificSignaure" es una función que toma un parámetro llamado "valores" y devuelve una promesa
    * @param {any} values - any = {
    */
   const verificSignaure = async (values: any) => {
@@ -49,8 +45,8 @@ function components. */
     setdataInfo(values.users);
   };
   /**
-   * ShowConfirm() is a function that displays a modal window with a title, content, and two buttons,
-   * one of which calls the onSignature() function.
+   * ShowConfirm() es una función que muestra una ventana modal con un título, contenido y dos botones,
+   * uno de los cuales llama a la función onSignature().
    */
   const showConfirm = () => {
     confirm({
@@ -68,9 +64,9 @@ function components. */
     });
   };
   /**
-   * "onSignature" is a function that sets the state of "firma" to the length of the "dataInfo" array,
-   * then calls the "signaturePDF" function, then calls the "addSignature" function, which returns a
-   * promise that calls the "addSignatory" function.
+   * "onSignature" es una función que establece el estado de "firma" a la longitud de la matriz "dataInfo",
+   * luego llama a la función "signaturePDF", luego llama a la función "addSignature", que devuelve un
+   * promesa que llama a la función "addSignatory".
    */
   const onSignature = async () => {
     setFirma(dataInfo.length);
@@ -126,7 +122,7 @@ function components. */
                       <Upload
                         listType="text"
                         showUploadList={{ showRemoveIcon: true }}
-                        accept=".pfx"
+                        accept=".p12"
                         maxCount={1}
                         beforeUpload={(file) => {
                           return false;

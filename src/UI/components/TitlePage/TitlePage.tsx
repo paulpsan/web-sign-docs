@@ -6,7 +6,7 @@ interface PropsTitlePage {
     iconComp: React.ReactElement
 }
 export const TitlePage: React.FunctionComponent<PropsTitlePage> = (prosp: PropsTitlePage) => {
-/* Destructuring the props object. */
+/* desestructura el objeto de las propiedades */
     const { titleContent = "prop type", iconComp } = prosp;
     return (
         <div className="title-content">

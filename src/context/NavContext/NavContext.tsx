@@ -1,13 +1,13 @@
 import { createContext, useState } from "react";
 
-/* Creating a context object. */
+/* Creación de un objeto de contexto. */
 const NavContext = createContext({});
 
 /**
- * It's a function that takes in a child component and returns a NavContext.Provider component that has
- * a value of an object with a nav state and a setNav function.
- * @param {any}  - any - this is a type that allows you to pass any type of data to the component.
- * @returns The NavContext.Provider is being returned.
+ * Es una función que toma un componente secundario y devuelve un componente NavContext.Provider que tiene
+ * un valor de un objeto con un estado de navegación y una función setNav.
+ * @param { children }  - any - es como parametro un componente hijo que heredara.
+ * @returns Se devuelve el NavContext.Provider.
  */
 export const NavProider = ( { children }: any ) => {
   const [nav, setNav] = useState(false);

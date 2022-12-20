@@ -1,9 +1,9 @@
 import { message } from "antd";
-import ms_signature from "../ms-signature";
+import ms_signature from "../../api/ms-signature";
 
 /**
- * It takes a file, uploads it to the server, and then the server unzips the file and returns a
- * message.
+ * Toma un archivo, lo sube al servidor y luego el servidor descomprime el archivo y devuelve un
+ * mensaje.
  * </code>
  * @param {any} values - {
  */

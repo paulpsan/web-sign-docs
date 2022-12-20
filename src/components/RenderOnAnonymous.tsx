@@ -1,7 +1,7 @@
 import UserService from '../services/UserService';
 
 /**
- * If the user is not logged in, render the children, otherwise, render nothing.
- * @param {any}  - any - this is the type of the parameter. In this case, it's an object.
+ * Si el usuario no ha iniciado sesión, renderice el CHILDREN, de lo contrario, no renderice nada.
+ * @param {any}  - any - este es el tipo del parámetro. En este caso, es un objeto.
  */
 export const RenderOnAnonymous = ( {children}:any ) => ( !UserService.isLoggedIn()) ? children : null; 

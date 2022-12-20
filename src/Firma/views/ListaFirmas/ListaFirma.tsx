@@ -2,21 +2,24 @@ import { DownloadOutlined, FileProtectOutlined } from '@ant-design/icons'
 import { Button, Space, Table, Tag } from 'antd';
 import { TitlePage } from '../../../UI/components/TitlePage/TitlePage'
 import type { ColumnsType } from "antd/es/table";
+import type { TableProps } from 'antd';
 import "./ListaFirma.scss"
-import { ListZIP } from '../../../api/ListFiles/hooks/ListZIP';
-import downloadZIP from '../../../api/DownloadFile/DownloadFile';
+import { ListZIP } from '../../../services/ListFiles/hooks/ListZIP';
+import downloadZIP from '../../../services/DownloadFile/DownloadFile';
+import { useState } from "react";
+import { SorterResult } from 'antd/lib/table/interface';
 interface DataType {
   key: string;
   nombreDoc: string;
   rutaDoc: number;
   extDoc: string;
+  fecha: string;
 }
 
 export const ListaFirma = () => {
-/* A destructuring assignment. It is a way to extract data from arrays or objects into distinct
-variables. */
+  /* A destructuring assignment. It is a way to extract data from arrays or objects into distinct
+  variables. */
   const { list_files, isLoadingZIP } = ListZIP();
-  
   /* A way to extract data from arrays or objects into distinct variables. */
   const columns: ColumnsType<DataType> = [
     {
@@ -54,7 +57,7 @@ variables. */
       render: (_, record) => (
         <>
           <Space>
-            <Button type="primary" icon={<DownloadOutlined />} onClick={ () => { getDataFile( record.nombreDoc, record.extDoc ) } } > Descargar </Button>
+            <Button type="primary" icon={<DownloadOutlined />} onClick={() => { getDataFile(record.nombreDoc, record.extDoc) }} > Descargar </Button>
           </Space>
         </>
       ),
@@ -66,8 +69,8 @@ variables. */
    * @param {any} nombreDoc - is the name of the file
    * @param {any} extDoc - "pdf"
    */
-  const getDataFile = ( nombreDoc:any, extDoc:any ) => {
-    const nameFile = nombreDoc+"."+extDoc.toLowerCase();
+  const getDataFile = (nombreDoc: any, extDoc: any) => {
+    const nameFile = nombreDoc + "." + extDoc.toLowerCase();
     downloadZIP(nameFile);
   }
   return (

@@ -1,9 +1,8 @@
 import { message } from "antd";
 import moment from "moment";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes a FormData object, appends some data to it, and then sends it to an API endpoint.
+ * Toma un objeto JSON, le agrega algunos datos y luego lo envía a un punto final de la API.
  */
 export default function endProccessSignature() {
     const date = new Date()

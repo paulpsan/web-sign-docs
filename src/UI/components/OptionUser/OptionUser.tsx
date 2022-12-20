@@ -20,10 +20,10 @@ function getItem(
         label,
     } as MenuItem;
 }
-/* A function that returns a menu with the options of the user. */
+/* Una función que devuelve un menú con las opciones del usuario. */
 export const OptionUser = () => {
     const { nav }: any = useContext(NavContext);
-    /* Create an array of objects referencing the menu component as a child. */
+    /* Cree una matriz de objetos que hagan referencia al componente de menú como elemento secundario. */
     const items: MenuItem[] = [
         getItem( UserService.getUsername(), 'sub1', nav ? <UserOutlined /> : null, [
             getItem((<Link className='text_link' to={"/firma-page/guia-user"}> Guia de Usuario </Link> ), '3', <QuestionOutlined />),
@@ -31,8 +31,8 @@ export const OptionUser = () => {
         ]),
     ];
     /**
-     * If the index is 4, then logout the user and clear the local storage.
-     * @param {any} index - the index of the selected item in the dropdown
+     * Si el índice es 4, cierre la sesión del usuario y borre el almacenamiento local.
+     * @param {any} index - el índice del elemento seleccionado en el menú desplegable
      */
     const getOptions = (index: any) => {
         switch (index) {

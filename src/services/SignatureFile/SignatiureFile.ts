@@ -1,20 +1,20 @@
 import { message } from "antd";
-import ms_signature from "../ms-signature";
-
+import ms_signature from "../../api/ms-signature";
 /**
- * It takes an array of objects, each object has a file and a password, the function sends the file and
- * password to the server, the server returns a message, the function returns an array of messages.
+ * Toma una matriz de objetos, cada objeto tiene un archivo y una contraseña, la función envía el archivo y
+ * contraseña al servidor, el servidor devuelve un mensaje, la función devuelve una matriz de mensajes.
  * </code>
  * @param {any} values - any = {
- * @returns An array of messages.
+ * @returns Una serie de mensajes.
  */
 export async function verifSignature(values: any) {
     const messageState: any = [];
     for (let index = 0; index < values.users.length; index++) {
         var formData = new FormData();
         const element = values.users[index];
+        const encryp = btoa(element.password);
         formData.append("files", element.file[0].originFileObj);
-        formData.append("password", element.password);
+        formData.append("password", encryp);
         await ms_signature
             .post("/certificate_verification", formData)
             .then((resp) => {
@@ -28,10 +28,10 @@ export async function verifSignature(values: any) {
     return messageState
 }
 /**
- * It returns true if all the elements in the array are equal to "Contraseña Verificada", otherwise it
- * returns false.
- * @param {string[]} array_state - is an array of strings that contains the state of the password.
- * @returns A function that takes an array of strings as an argument and returns a boolean.
+ * Devuelve verdadero si todos los elementos del array son iguales a "Contraseña Verificada", en caso contrario
+ * retorna false.
+ * @param {string[]} array_state -es una matriz de cadenas que contiene el estado de la contraseña.
+ * @returns Una función que toma una matriz de cadenas como argumento y devuelve un valor booleano.
  */
 export function StateVerific(array_state:string[]) {
     let verfi = 0;
@@ -48,14 +48,15 @@ export function StateVerific(array_state:string[]) {
     }
 }
 /**
- * It takes an array of objects, and for each object in the array, it makes a POST request to a server
- * @param {any} dataInfo - is an array of objects that contains the following properties:
+ * Toma una matriz de objetos y, para cada objeto de la matriz, realiza una solicitud POST a un servidor.
+ * @param {any} dataInfo - es una matriz de objetos que contiene las siguientes propiedades:
  */
 export async function signaturePDF(dataInfo: any) {
     for (let index = 0; index < dataInfo.length; index++) {
         var formDataF = new FormData();
         const { password, file, firmante }: any = dataInfo[index];
-        formDataF.append("contraseña", password);
+        const encryp = btoa(password);
+        formDataF.append("contraseña", encryp);
         formDataF.append("firmante", firmante);
         formDataF.append("certificado", file[0].originFileObj);
         formDataF.append("firma", index.toString());

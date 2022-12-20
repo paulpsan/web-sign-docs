@@ -8,11 +8,11 @@ import { ExclamationCircleOutlined, FileProtectOutlined } from "@ant-design/icon
 import { CompressFile } from "./views/CompressFile/CompressFile";
 import { FirmaProvider } from "../../../context/FirmaContext/FirmaContext";
 import { StepsContext } from "../../../context/StepsContext/StepsContext";
-import endProccessSignature from "../../../api/EndProcess/EndProcess";
-import cancelProcessSignature from "../../../api/EndProcess/CancelProcess";
+import endProccessSignature from "../../../services/EndProcess/EndProcess";
+import cancelProcessSignature from "../../../services/EndProcess/CancelProcess";
 const { confirm } = Modal;
 import "./Firma.scss";
-/* An array of objects. */
+/* Un arrat de obetos dentro del Steps. */
 const steps = [
   {
     title: "Paso 1",
@@ -32,22 +32,22 @@ const steps = [
   },
 ];
 export const Firma = () => {
-/* A hook that is used to create a notification. */
+/* Un HOOK que se utiliza para crear una notificación en base al contexto del componente. */
   const [api, contextHolder] = notification.useNotification();
-/* A hook that is used to create a notification. */
+/* Estado del current para recorrido del Steps. */
   const [current, setCurrent] = useState(0);
-/* A hook that is used to create a notification. */
+/* Valores iniciales entregados al contexto */
   const valueSteps = { current, setCurrent };
   /**
-   * The next function increments the current variable by 1.
+   * La siguiente función incrementa la variable actual en 1.
    */
   const next = () => {
     setCurrent(current + 1);
   };
-/* Creating an array of objects. */
+/* Creación de una matriz de objetos. */
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
   /**
-   * It's a function that shows a modal with a title, a message, and two buttons.
+   * IEs una función que muestra un modal con un título, un mensaje y dos botones.
    */
   const showConfirm = () => {
     confirm({

@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react'
 
-/* It's creating a context. */
+/* Es crear un contexto. */
 const FirmaContext = createContext({});
 
 /**
- * It's a function that returns a component that returns a component
- * @param {any}  - firma is the signature image
- * @returns The provider is returning the context and the children.
+ * Es una función que devuelve un componente que devuelve un componente
+ * @param { children }  - es como parametro un componente hijo que heredara
+ * @returns El proveedor está devolviendo el contexto y los niños.
  */
 export const FirmaProvider = ({ children }: any) => {
     const [firma, setFirma] = useState(0);

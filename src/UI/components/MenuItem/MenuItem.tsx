@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import NavContext from '../../../context/NavContext/NavContext';
 import "./MenuItem.scss"
 /**
- * A React component MenuItem -> SideMenu.
+ *Un componente React MenuItem -> SideMenu.
  * @param {any} url - path 
  * @param {any} icon - component Icon
  * @param {any} description - option menu name
