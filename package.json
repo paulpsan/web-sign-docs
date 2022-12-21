@@ -9,21 +9,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.23.6",
     "axios": "^0.26.1",
+    "js-file-download": "^0.4.12",
     "keycloak-js": "^7.0.1",
+    "moment": "^2.29.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-highlight-words": "^0.18.0",
+    "react-icons": "^4.6.0",
     "react-router-dom": "^6.3.0",
-    "sass": "^1.56.1",
-    "antd": "^4.23.6",
-    "@ant-design/icons": "^4.7.0",
-    "js-file-download": "^0.4.12",
-    "moment": "^2.29.4",
-    "react-icons": "^4.6.0"
+    "sass": "^1.56.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/react-highlight-words": "^0.16.4",
     "@vitejs/plugin-react": "^1.0.7",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
