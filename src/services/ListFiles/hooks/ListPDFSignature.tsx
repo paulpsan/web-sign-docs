@@ -10,10 +10,7 @@ export const ListPDFSignature = ({ firma }: any) => {
      */
     const getFiles = async () => {
         const carpetaFinal = firma - 1;
-        const data = JSON.stringify({
-            "carpetaFinal": carpetaFinal.toString()
-        })
-        await ms_signature.post('/files_pdf_signed', data, { headers: { 'Content-Type': 'application/json' } })
+        await ms_signature.get(`/get_files_pdf_signed?carpetaFinal=${carpetaFinal}`, { headers: { 'Content-Type': 'application/json' } })
             .then( resp => {
                 setlist_files(resp.data);
                 setisLoadingSigature(false);
@@ -24,7 +21,7 @@ export const ListPDFSignature = ({ firma }: any) => {
             });
         
     };
-    /* Es un gancho que se ejecuta cuando se monta el componente. */
+    /* Es un HOOK que se ejecuta cuando se monta el componente. */
     useEffect(() => {
         getFiles()
     }, []);
