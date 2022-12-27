@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
-import { Button, Form, Upload } from "antd";
+import { Button, Form, Spin, Upload } from "antd";
 import { unZipFiles } from "../../../../../services/UpFiles/UpFile";
 import type { UploadFile, UploadProps } from "antd/es/upload/interface";
 const { Dragger } = Upload;
@@ -44,46 +44,46 @@ export const UpFile = () => {
   return (
     <>
       <div className="verif_content">
-        <Form
-          name="dynamic_form_nest_item"
-          className="form-zip"
-          onFinish={onFinish}
-          autoComplete="off"
-          layout="vertical"
-          id="unzip_files"
-        >
-          <Form.Item
-            name={"file"}
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: "Porfavor cargue un archivo ZIP.",
-              },
-            ]}
+          <Form
+            name="dynamic_form_nest_item"
+            className="form-zip"
+            onFinish={onFinish}
+            autoComplete="off"
+            layout="vertical"
+            id="unzip_files"
           >
-            <Dragger {...props} accept=".zip" maxCount={1} listType="picture">
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">
-                Haga clic o arrastre el archivo a esta área para cargarlo
-              </p>
-              <p className="ant-upload-hint">
-                Soporte para una carga única o masiva. Prohibir estrictamente
-                subir datos de la empresa u otros archivos de la banda
-              </p>
-            </Dragger>
-          </Form.Item>
-          <Form.Item>
-            <div className="btn_process">
-              <Button type="primary" size="large" htmlType="submit">
-                Procesar Archivo
-              </Button>
-            </div>
-          </Form.Item>
-        </Form>
+            <Form.Item
+              name={"file"}
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+              rules={[
+                {
+                  required: true,
+                  message: "Porfavor cargue un archivo ZIP.",
+                },
+              ]}
+            >
+              <Dragger {...props} accept=".zip" maxCount={1} listType="picture">
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">
+                  Haga clic o arrastre el archivo a esta área para cargarlo
+                </p>
+                <p className="ant-upload-hint">
+                  Soporte para una carga única o masiva. Prohibir estrictamente
+                  subir datos de la empresa u otros archivos de la banda
+                </p>
+              </Dragger>
+            </Form.Item>
+            <Form.Item>
+              <div className="btn_process">
+                <Button type="primary" size="large" htmlType="submit">
+                  Procesar Archivo
+                </Button>
+              </div>
+            </Form.Item>
+          </Form>
       </div>
     </>
   );

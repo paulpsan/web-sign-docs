@@ -8,6 +8,7 @@ import logo_bfo from "./../../../assets/LOGO_FONDO_BLANCO_RGB-01-SF.png";
 import logo_mini_bfo from "./../../../assets/mini_logo_bfo.png";
 import NavContext from "../../../context/NavContext/NavContext";
 import "./SideBar.scss";
+import { Tag } from "antd";
 
 export const SideBar = ({ children }: any) => {
 /* Desestrucutra las propiedades del contexto Nav */
@@ -34,6 +35,9 @@ export const SideBar = ({ children }: any) => {
               className="mobile_cancel_icon"
               onClick={() => setNav(!nav)}
             />
+          </div>
+          <div className="version_web">
+            <Tag color="volcano">V.0.0.2</Tag>
           </div>
           <div>
             <OptionUser/>

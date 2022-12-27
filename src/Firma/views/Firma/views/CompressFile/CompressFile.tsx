@@ -14,7 +14,7 @@ export const CompressFile = () => {
 /* Un hook que accede al contexto en base a componentes anteriores dentro del contexto firma */
   const { firma }: any = useContext(FirmaContext);  
 /* Hook para obtener la lista de los archovos PDF firmados */
-  const { isLoadingSigature, list_files } = ListPDFSignature({ firma });
+  const { isLoadingSigature, list_files_signed } = ListPDFSignature({ firma });
 /* Hook que controla el satado del modal. */
   const [open, setOpen] = useState(false);
   /* Hook que controla el estado de array view */
@@ -74,7 +74,7 @@ export const CompressFile = () => {
     <div className="content_list">
       <Table
         columns={columns}
-        dataSource={list_files}
+        dataSource={list_files_signed}
         rowKey="rutaDoc"
         pagination={{ defaultPageSize: 5, position: ["bottomCenter"] }}
         size="large"
