@@ -15,13 +15,13 @@ const _kc = new (Keycloak as any)(keycloakConf);
  */
 const initKeycloak = (onAuthenticatedCallback: any) => {
   _kc.init({
-    //onLoad: 'check-sso',
+    onLoad: 'check-sso',
     silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
     pkceMethod: 'S256',
-    onLoad: "login-required",
-    promiseType: "native"
+    // onLoad: "login-required",
+    // promiseType: "native"
   })
-    .then((authenticated: any) => {
+    .success((authenticated: any) => {
       if (!authenticated) {
         message.success("user is not authenticated..!");
       }
@@ -29,7 +29,7 @@ const initKeycloak = (onAuthenticatedCallback: any) => {
       localStorage.setItem("keycloak", JSON.stringify(_kc));
       onAuthenticatedCallback();
     })
-    .catch((error:any) => message.error(error));
+    .error(console.error);
 };
 
 /* A shorthand for `const doLogin = () => _kc.login();` */
