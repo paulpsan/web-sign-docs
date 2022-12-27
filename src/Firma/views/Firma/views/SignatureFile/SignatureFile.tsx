@@ -137,6 +137,23 @@ export const SignatureFile = () => {
                     </Form.Item>
                     <Form.Item
                       {...restField}
+                      label="Cargo"
+                      name={[name, "cargo"]}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Porfavor ingrese el cargo del firmante",
+                        },
+                        {
+                          pattern: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+                          message: "Solo se aceptan espacios y letras",
+                        },
+                      ]}
+                    >
+                      <Input size="large" />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
                       label="Firmante"
                       name={[name, "firmante"]}
                       rules={[

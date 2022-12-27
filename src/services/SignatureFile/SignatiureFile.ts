@@ -53,10 +53,12 @@ export function StateVerific(array_state:string[]) {
  */
 export async function signaturePDF(dataInfo: any) {
     for (let index = 0; index < dataInfo.length; index++) {
+        console.log(dataInfo[index]);
         var formDataF = new FormData();
-        const { password, file, firmante }: any = dataInfo[index];
+        const { password, cargo, file, firmante }: any = dataInfo[index];
         const encryp = btoa(password);
         formDataF.append("contraseña", encryp);
+        formDataF.append("cargo", cargo);
         formDataF.append("firmante", firmante);
         formDataF.append("certificado", file[0].originFileObj);
         formDataF.append("firma", index.toString());

@@ -24,3 +24,39 @@
     }
   }
 }
+
+.content_find{
+  .ant-btn {
+    background-color: var(--color_button_form);
+    border-style: none;
+    &:hover {
+      background-color: var(--color_button_form_active);
+    }
+    &:focus {
+      background-color: var(--color_button_form);
+    }
+  }
+}
+.content_reset{
+  .ant-btn-default{
+    border-style: none;
+    color: var(--color_text);
+    &:hover {
+      background-color: var(--color_button_form_active);
+      color: var(--color_text_default);
+    }
+    &:focus {
+      background-color: var(--color_button_form);
+    }
+  }
+  .ant-btn-link{
+    border-style: none;
+    color: var(--color_text);
+    &:hover {
+      color: var(--color_button_form_active);
+    }
+    &:focus {
+      color: var(--color_button_form);
+    }
+  }
+}
