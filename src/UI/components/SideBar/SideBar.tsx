@@ -37,7 +37,7 @@ export const SideBar = ({ children }: any) => {
             />
           </div>
           <div className="version_web">
-            <Tag color="volcano">V.0.0.2</Tag>
+            <Tag color="volcano">V.1.0.0</Tag>
           </div>
           <div>
             <OptionUser/>

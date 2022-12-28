@@ -6,7 +6,7 @@ export const ListPDF = () => {
     const [list_files, setlist_files] = useState([])
     const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
     /**
-     * Voy a llamar a la función getFiles, y cuando termine, voy a configurar list_files
+     * Se llama a la función getFiles, y cuando termine, voy a configurar list_files
      * estado a los datos que obtuve de la llamada API, y voy a configurar el estado isLoadingA
      * a falso
      */

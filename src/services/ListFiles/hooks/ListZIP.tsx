@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react'
-import UserService from '../../../services/UserService';
 import ms_signature from '../../../api/ms-signature';
 export const ListZIP = () => {
     const [isLoadingZIP, setisLoadingZIP] = useState(true);
     const [list_files, setlist_files] = useState([])
     const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
     /**
-     * It takes the user's email address, splits it into an array, and then uses the first element of
-     * the array as the name of a folder. 
+     * Toma la dirección de correo electrónico del usuario, la divide en una matriz y luego usa el primer elemento de
+     * la matriz como el nombre de una carpeta.
      * 
-     * It then uses that folder name to make a request to the server, which returns a list of files. 
+     * Luego usa ese nombre de carpeta para realizar una solicitud al servidor, que devuelve una lista de archivos. 
      * 
-     * The list of files is then stored in a state variable.
+     * A continuación, la lista de archivos se almacena en una variable de estado.
      */
     const getFiles = async () => {
         const myArray = preferred_username.split('@');
@@ -25,7 +24,7 @@ export const ListZIP = () => {
                 setisLoadingZIP(false);
             });
     }
-    /* A hook that is called when the component is mounted. */
+    /* Es un hook que se llama cuando se monta el componente. */
     useEffect(() => {
         getFiles()
     }, [])
