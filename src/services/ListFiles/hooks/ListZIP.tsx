@@ -12,11 +12,11 @@ export const ListZIP = () => {
      * 
      * A continuación, la lista de archivos se almacena en una variable de estado.
      */
-    const getFiles = async () => {
+    const getFilesZip = async () => {
         const myArray = preferred_username.split('@');
         await ms_signature.get(`/get_zip_signature?nameFolder=${myArray[0]}`, { headers:{ 'Content-Type': 'application/json' } })
-            .then( (res) => {
-                setlist_files(res.data);
+        .then( (resp) => {    
+                setlist_files(resp.data);
                 setisLoadingZIP(false);
             })
             .catch( () => {
@@ -26,7 +26,7 @@ export const ListZIP = () => {
     }
     /* Es un hook que se llama cuando se monta el componente. */
     useEffect(() => {
-        getFiles()
+        getFilesZip()
     }, [])
     return {
         isLoadingZIP,
