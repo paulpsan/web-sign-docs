@@ -9,7 +9,7 @@ import UserService from "./services/UserService";
  * Si el usuario no ha iniciado sesión, regístrelo. Si ha iniciado sesión, renderice la aplicación.
  * @returns El valor de retorno de la función es el valor de retorno de la última instrucción.
  */
-function App() {
+function App() {  
   return (
     <>
       {!UserService.isLoggedIn() ? UserService.doLogin() :

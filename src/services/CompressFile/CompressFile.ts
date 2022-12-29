@@ -14,13 +14,15 @@ export default function compressSignaturePDF(firma: any) {
     const name_zip = preferred_username + "_" + fecha_compress;
     const data = JSON.stringify({
         "name_zip": name_zip,
-        "folder_final": carpetaFinal.toString()
+        "folder_final": carpetaFinal.toString(),
+        "name_user": preferred_username
     })
     ms_signature.post("/compress_files_pdf", data, { responseType: "blob", headers: { 'Content-Type': 'application/json' } })
         .then(({ data }) => {
             fileDownload(data, name_zip + ".zip");
         })
         .catch((error) => {
+            console.log(error);
             message.error("Error al comprimir archivos!")
         });
 }

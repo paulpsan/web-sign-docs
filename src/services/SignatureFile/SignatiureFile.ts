@@ -52,11 +52,12 @@ export function StateVerific(array_state:string[]) {
  * @param {any} dataInfo - es una matriz de objetos que contiene las siguientes propiedades:
  */
 export async function signaturePDF(dataInfo: any) {
+    const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
     for (let index = 0; index < dataInfo.length; index++) {
-        console.log(dataInfo[index]);
         var formDataF = new FormData();
         const { password, cargo, file, firmante }: any = dataInfo[index];
         const encryp = btoa(password);
+        formDataF.append("name_user", preferred_username);
         formDataF.append("contraseña", encryp);
         formDataF.append("cargo", cargo);
         formDataF.append("firmante", firmante);
@@ -72,6 +73,7 @@ export async function signaturePDF(dataInfo: any) {
                     : message.error("Error al firmar archivos");
             })
             .catch((error) => {
+                console.log(error);
                 message.error("Error al firmar archivos")
             });
     }

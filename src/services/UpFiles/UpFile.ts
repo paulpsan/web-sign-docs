@@ -9,7 +9,9 @@ import ms_signature from "../../api/ms-signature";
  */
 export async function unZipFiles(values:any) {
   var formdata = new FormData();
+  const { tokenParsed: { preferred_username } } = JSON.parse(localStorage.getItem('keycloak')!);
   formdata.append("files", values.file[0].originFileObj);
+  formdata.append("name_user", preferred_username);
   await ms_signature
     .post("/extract_files", formdata)
     .then((resp) => {

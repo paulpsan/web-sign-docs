@@ -7,16 +7,17 @@ import { ListaFirma } from "../views/ListaFirmas/ListaFirma";
 import { GuiaUser } from "../views/GuiaUser/GuiaUser";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import NavContext from "../../context/NavContext/NavContext";
+import { getEnvVariables } from "../../helpers/getEnvVariables";
 export const FirmaPages = () => {
-/* Obtener el objeto keycloak del almacenamiento local. */
+  /* Obtener el objeto keycloak del almacenamiento local. */
   const keycloak = JSON.parse(localStorage.getItem('keycloak')!);
-/* Establecer el objeto keycloak en el estado AuthObject. */
+  /* Establecer el objeto keycloak en el estado AuthObject. */
   const [AuthObject, setAuthObject] = useState(keycloak);
-/* Una variable de estado que se utiliza para alternar la barra lateral. */
+  /* Una variable de estado que se utiliza para alternar la barra lateral. */
   const [nav, setNav] = useState(true);
-/* Creando un objeto con las propiedades nav y setNav. */
+  /* Creando un objeto con las propiedades nav y setNav. */
   const value_nav = { nav, setNav };
-/* Crear un objeto con las propiedades AuthObject y setAuthObject. */
+  /* Crear un objeto con las propiedades AuthObject y setAuthObject. */
   const value_auth = { AuthObject, setAuthObject };
   return (
     <>

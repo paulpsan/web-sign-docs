@@ -12,6 +12,7 @@ import endProccessSignature from "../../../services/EndProcess/EndProcess";
 import cancelProcessSignature from "../../../services/EndProcess/CancelProcess";
 const { confirm } = Modal;
 import "./Firma.scss";
+import { getEnvVariables } from "../../../helpers/getEnvVariables";
 /* Un arrat de obetos dentro del Steps. */
 const steps = [
   {
