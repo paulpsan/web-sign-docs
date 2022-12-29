@@ -1,6 +1,6 @@
 export const getEnvVariables = () => {
     //import.meta.env;
     return{
-        ...import.meta.env.VITE_SVC_SIGNATURE_API
+        VITE_SVC_SIGNATURE_API: import.meta.env.VITE_SVC_SIGNATURE_API
     }
 }
