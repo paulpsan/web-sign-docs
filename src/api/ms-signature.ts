@@ -1,8 +1,8 @@
 import axios from "axios";
-import { environment } from "../environments/environment";
-
+import { getEnvVariables } from "../helpers/getEnvVariables";
+const { VITE_SVC_SIGNATURE_API } = getEnvVariables();
 const ms_signature = axios.create({
-    baseURL: `${ environment.URL}/v1/ms-firmas`
+    baseURL: `${ VITE_SVC_SIGNATURE_API }/v1/ms-firmas`
 });
 
 export default ms_signature;
