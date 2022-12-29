@@ -22,7 +22,7 @@ function getItem(
 }
 /* Una función que devuelve un menú con las opciones del usuario. */
 export const OptionUser = () => {
-    const { nav }: any = useContext(NavContext);
+    const { nav, setNav }: any = useContext(NavContext);
     /* Cree una matriz de objetos que hagan referencia al componente de menú como elemento secundario. */
     const items: MenuItem[] = [
         getItem( UserService.getUsername(), 'sub1', nav ? <UserOutlined /> : null, [

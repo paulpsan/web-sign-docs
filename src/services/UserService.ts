@@ -1,8 +1,7 @@
 import { message } from "antd";
 import Keycloak from "keycloak-js";
-import keycloakConf from '../../keycloak.json';
-const _kc = new (Keycloak as any)(keycloakConf);
-
+import { getKeycloakVariables } from "../helpers/getKeycloakVariables";
+const _kc = new (Keycloak as any)(getKeycloakVariables());
 /**
  * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
  *
