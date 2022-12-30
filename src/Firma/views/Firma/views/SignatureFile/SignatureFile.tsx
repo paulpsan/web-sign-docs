@@ -71,7 +71,7 @@ export const SignatureFile = () => {
   const onSignature = async () => {
     setFirma(dataInfo.length);
     signaturePDF(dataInfo);
-    addSignature(dataInfo.length).then((id_signature) => {
+    await addSignature(dataInfo.length).then((id_signature) => {
       addSignatory(dataInfo.length, id_signature);
     });
   };
