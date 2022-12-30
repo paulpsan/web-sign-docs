@@ -14,26 +14,29 @@ const { VITE_USER_ACCESS_ROLE } = getEnvVariables();
  * @param {any} onAuthenticatedCallback - This is a callback function that will be called after the
  * user is authenticated.
  */
-const initKeycloak = (onAuthenticatedCallback: any, renderNoAccess: any) => {
+const initKeycloak = (onAuthenticatedCallback: any) => {
   _kc.init({
     onLoad: 'check-sso',
     silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
     pkceMethod: 'S256',
-    //  onLoad: "login-required",
+    //onLoad: "login-required",
     promiseType: "native"
   })
     .then((authenticated: any) => {
       if (!authenticated) {
-        message.success("user is not authenticated..!");
+        message.error("user is not authenticated..!");
       }
-      const { realmAccess: { roles } } = _kc;
-      if(roles.includes(VITE_USER_ACCESS_ROLE)){
-        localStorage.setItem("authenticated", JSON.stringify(authenticated));
-        localStorage.setItem("keycloak", JSON.stringify(_kc));
-        onAuthenticatedCallback();
-      }else{
-        renderNoAccess();
-      }
+      localStorage.setItem("authenticated", JSON.stringify(authenticated));
+      localStorage.setItem("keycloak", JSON.stringify(_kc));
+      onAuthenticatedCallback();
+      // const { realmAccess: { roles } } = _kc;
+      // if(roles.includes(VITE_USER_ACCESS_ROLE)){
+      //   
+      //   
+      //   onAuthenticatedCallback();
+      // }else{
+      //   renderNoAccess();
+      // }
     })
     .catch(console.error);
 };

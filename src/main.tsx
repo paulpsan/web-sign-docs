@@ -14,11 +14,8 @@ const root = document.getElementById('root');
 const renderApp = () => {
   ReactDOM.render( <App />, root );
 }
-const renderNoAccess = () => {
-  ReactDOM.render( <RestrictedAccess/>, root)
-}
 /* Inicializar el servicio Keycloak y luego llamar a la función renderApp. */
-UserService.initKeycloak(renderApp, renderNoAccess); 
+UserService.initKeycloak(renderApp); 
 
 /* Configurando HttpService para usar el token Keycloak. */
 HttpService.configure();
