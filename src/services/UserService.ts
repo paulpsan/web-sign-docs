@@ -16,11 +16,11 @@ const { VITE_USER_ACCESS_ROLE } = getEnvVariables();
  */
 const initKeycloak = (onAuthenticatedCallback: any, renderNoAccess: any) => {
   _kc.init({
-    //onLoad: 'check-sso',
-    //silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
-    //pkceMethod: 'S256',
-     onLoad: "login-required",
-     promiseType: "native"
+    onLoad: 'check-sso',
+    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+    pkceMethod: 'S256',
+    //  onLoad: "login-required",
+    promiseType: "native"
   })
     .then((authenticated: any) => {
       if (!authenticated) {

@@ -11,7 +11,7 @@ CUSTOMER=fortaleza
 REPOSITORY=repository.grupofortaleza.com.bo:5443
 
 # Getting artifact version from CONFIG
-VERSION=0.0.2
+VERSION=0.0.3
 #VERSION=`cat src/app/config.ts | grep VERSION | sed 's/[^0-9.]*//g'`
 
 # Getting artifact name
@@ -22,9 +22,9 @@ ARTIFACT=web-sign-docs
 echo "===== Processing artifact $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION ======"
 
 # Building the image for micro service
-# docker build . -t $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION-prod --build-arg ENVIRONMENT=prod 
+# docker build . -t $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION-prod --build-arg ENVIRONMENT=production 
 
-docker build . -t $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION-test --build-arg ENVIRONMENT=test 
+docker build . -t $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION-test --build-arg ENVIRONMENT=testing 
 
 # docker build . -t $PRODUCT/$ARTIFACT-$CUSTOMER:$VERSION-lb --build-arg ENVIRONMENT=lb
 

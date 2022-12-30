@@ -6,6 +6,9 @@ RUN npm install -g typescript --quiet
 
 #Copiamos el resto del codigo fuente que puede cambiar mas dinamicamente
 COPY src/ /workspace/app/src
+COPY .env.development /workspace/app
+COPY .env.production /workspace/app
+COPY .env.testing /workspace/app
 COPY README.md /workspace/app
 COPY package.json /workspace/app
 COPY tsconfig.json /workspace/app
@@ -22,7 +25,7 @@ ARG ENVIRONMENT
 RUN echo "ENVIRONMENT 1 " $ENVIRONMENT
 
 # Generamos la carpeta dist
-RUN npm run build
+RUN npm run build:$ENVIRONMENT
 # Comenzamos la segunda etapa de la construcción
 FROM nginx:1.17.3-alpine
 
