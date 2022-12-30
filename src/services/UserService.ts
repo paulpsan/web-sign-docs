@@ -1,7 +1,9 @@
 import { message } from "antd";
 import Keycloak from "keycloak-js";
 import { getKeycloakVariables } from "../helpers/getKeycloakVariables";
+import { getEnvVariables } from "../helpers/getEnvVariables";
 const _kc = new (Keycloak as any)(getKeycloakVariables());
+const { VITE_USER_ACCESS_ROLE } = getEnvVariables();
 /**
  * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
  *
@@ -12,7 +14,7 @@ const _kc = new (Keycloak as any)(getKeycloakVariables());
  * @param {any} onAuthenticatedCallback - This is a callback function that will be called after the
  * user is authenticated.
  */
-const initKeycloak = (onAuthenticatedCallback: any) => {
+const initKeycloak = (onAuthenticatedCallback: any, renderNoAccess: any) => {
   _kc.init({
     //onLoad: 'check-sso',
     //silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
@@ -24,9 +26,14 @@ const initKeycloak = (onAuthenticatedCallback: any) => {
       if (!authenticated) {
         message.success("user is not authenticated..!");
       }
-      localStorage.setItem("authenticated", JSON.stringify(authenticated));
-      localStorage.setItem("keycloak", JSON.stringify(_kc));
-      onAuthenticatedCallback();
+      const { realmAccess: { roles } } = _kc;
+      if(roles.includes(VITE_USER_ACCESS_ROLE)){
+        localStorage.setItem("authenticated", JSON.stringify(authenticated));
+        localStorage.setItem("keycloak", JSON.stringify(_kc));
+        onAuthenticatedCallback();
+      }else{
+        renderNoAccess();
+      }
     })
     .catch(console.error);
 };
